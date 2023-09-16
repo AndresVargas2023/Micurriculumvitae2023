@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi CV</title>
+    <script src="html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div id= "cabecera" style="background-color: rgb(247, 250, 250); display: flex; align-items: center;">
+            <h2 style="text-align: center;">Curriculum Vitae</h2>
+            <img id="fondo" src="https://www.formacionimpulsat.com/wp-content/uploads/2023/08/ecrire-un-cv-1024x968.jpg.webp" alt="Imagen de CV">
+        </div>
+    </header>
+    <div id="contenedor">
+
+        <div id="informacion">
+            <h3>Información Personal</h3>
+            <div class="imagen">
+                <input type="file" id="fileInput" accept="image/*">
+                <button id="verImagen">Aceptar</button>
+                <br>
+                <img id="imagenMostrada" style="display:none; max-width: 20%;" alt="Imagen Cargada">
+                <script>
+                    const fileInput = document.getElementById('fileInput');
+                    const verImagen = document.getElementById('verImagen');
+                    const imagenMostrada = document.getElementById('imagenMostrada');
+            
+                    verImagen.addEventListener('click', function() {
+                        const file = fileInput.files[0];
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                imagenMostrada.src = e.target.result;
+                                imagenMostrada.style.display = 'block';
+                                fileInput.style.display = 'none';
+                                verImagen.style.display = 'none';
+                            };
+                            reader.readAsDataURL(file);
+                        } else {
+                            alert('Por favor, seleccione una imagen antes de hacer clic en "Ver Imagen".');
+                        }
+                    });
+                </script>
+            </div>
+            <label for="nombre">Nombre completo:</label>
+            <input class="item" id="nombre" type="text" placeholder="Escribi tu nombre completo">
+            <label for="tel">Número de teléfono:</label>
+            <input class="item" id="tel" type="tel" placeholder="Escribi tu número de teléfono">
+            <label for="mail">Correo electrónico:</label>
+            <input class="item" id="mail" type="email" placeholder="Escribi tu correo electrónico">
+            <label for="direccion">Dirección de domicilio:</label>
+            <input class="item" id="direccion" type="text" placeholder="Escribi la dirección de tu domicilio">
+        </div>
+
+        <div id="descripcion">
+            <h3>Descripción personal</h3>
+            <label for="descri">Valores personales:</label>
+            <input class="item" id="descri" type="text" placeholder="Describite tus valores brevemente. Ej: Soy honesto, responsable, proactivo">
+        </div>
+
+        <div id="laboral">
+            <h3>Experiencia Laboral</h3>
+            <label for="exp1">Trabajos:</label>
+            <textarea class="item" id="exp1" placeholder="Escribe dónde trabajaste y la duración del trabajo"></textarea>
+
+            <div class="oficios">
+                <h4>Oficios</h4>
+                <label for="of">Trabajo 1:</label>
+                <textarea class="item" id="exp1" placeholder="Escribe tus oficios"></textarea>
+            </div>
+        </div>
+
+        <div id="academica">
+            <h3>Historial Académico</h3>
+            <div class="primaria">
+                <h4>Formación Primaria</h4>
+                <textarea class="item" id="prim" placeholder="Escribi donde estudiaste y las fechas"></textarea>
+            </div>
+            <div class="secundaria">
+                <h4>Formación Secundaria</h4>
+                <textarea class="item" id="prim" placeholder="Escribi donde estudiaste y las fechas"></textarea>
+            </div>
+            <div class="universidad">
+                <h4>Formación Universitaria</h4>
+                <textarea class="item" id="prim" placeholder="Escribi donde estudiaste y las fechas"></textarea>
+                <div class="otros">
+                    <h4>Otros Estudios</h4>
+                    <textarea class="item" id="prim" placeholder="Escribi donde estudiaste y las fechas"></textarea>
+                 
+                </div>
+            </div>
+        </div>
+
+        <div id="referencias">
+            <h3>Referencias Personales</h3>
+            <textarea class="item" id="prim" placeholder="Escribi el número y el contacto de la persona"></textarea>
+        </div>
+
+        <div id="idiomas">
+            <h3>Idiomas</h3>
+            <textarea class="item" id="prim" placeholder="Escribi el idioma en que podés comunicarte"></textarea>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; /* Centrado horizontal */
+    align-items: center; /" id="finalizar">
+    <button id="btnCrearPdf">Click aquí</button>
+</div>
+</body>
+
+</html>
